@@ -1,0 +1,231 @@
+/* Hintergrund & Layout */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #141e30, #243b55);
+  font-family: "Arial", sans-serif;
+  color: #f2f2f2;
+  text-align: center;
+}
+
+/* Container für zentrierte Darstellung */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Card-Design */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Eingabefeld mit automatischer Formatierung */
+.iban-input {
+  width: calc(100% - 20px);
+  padding: 14px;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  color: #333;
+  text-align: center;
+  transition:
+    box-shadow 0.3s ease-in-out,
+    transform 0.2s ease-in-out;
+  letter-spacing: 2px; /* Abstand für bessere Lesbarkeit */
+}
+
+.iban-input:focus {
+  box-shadow: 0 0 10px rgba(30, 136, 229, 0.5);
+  transform: scale(1.02);
+}
+
+.iban-input.valid {
+  border: 2px solid #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.iban-input.invalid {
+  border: 2px solid #ff4d4d;
+  background-color: rgba(255, 77, 77, 0.1);
+}
+
+/* Check-Button */
+.check-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background: #1e88e5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.3s ease;
+}
+
+.check-button:hover {
+  background: #1565c0;
+  transform: scale(1.05);
+}
+
+.check-button:active {
+  transform: scale(0.95);
+}
+
+/* Copy-Button */
+.copy-button {
+  padding: 8px 12px;
+  margin-left: 8px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.copy-button:hover {
+  background: #218838;
+}
+
+/* Fehler- und Erfolgsmeldungen */
+.error-message {
+  color: #ff4d4d;
+  font-size: 1rem;
+  margin-top: 8px;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-message {
+  color: #4caf50;
+  font-size: 1rem;
+  margin-top: 8px;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.loading-text {
+  color: #f8c400;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Snackbar für Kopierbestätigung */
+.copy-success {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Flaggenbereich */
+.flag-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 80px;
+  margin: 10px auto;
+}
+
+/* Flaggenbild mit fixer Größe */
+.flag-image {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.flag-container:hover .flag-image {
+  transform: scale(1.1);
+}
+
+.flag-container .flag-image {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dropdown */
+.country-select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  color: #333;
+  transition: border 0.3s ease-in-out;
+}
+
+.country-select:focus {
+  border-color: #1e88e5;
+  outline: none;
+}
+
+/* Mobile Optimierung */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .iban-input {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .check-button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .flag-image {
+    width: 100px;
+    height: 65px;
+  }
+}
